@@ -3749,7 +3749,11 @@
 
                     var caption = $('#redactor-image-title').val().replace(/(<([^>]+)>)/ig,"");
                     var parent = $image.parent();
-                    parent.contents().filter(function(){return this.nodeType === 3}).remove()
+                    if (parent.hasClass('article-detail__image style_gray')) {
+                        parent.contents().filter(function () {
+                            return this.nodeType === 3
+                        }).remove();
+                    }
                     if (caption) {
                         $image.after(caption);
                         parent.addClass('article-detail__image style_gray');
