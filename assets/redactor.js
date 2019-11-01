@@ -3682,9 +3682,9 @@
                     // hide link's tooltip
                     $('.redactor-link-tooltip').remove();
 
-                    var parentP = $image.parents('p');
-                    if (parentP.hasClass('article-detail__image style_gray')) {
-                        $('#redactor-image-title').val(parentP.find('.redactor-image-caption').text());
+                    var parent = $image.parents('p');
+                    if (parent.hasClass('article-detail__image style_gray')) {
+                        $('#redactor-image-title').val(parent.contents().filter(function(){return this.nodeType === 3}).first().text());
                     }
 
                     $('#redactor-image-alt').val($image.attr('alt'));
@@ -3748,16 +3748,13 @@
                     var $link = $image.closest('a', this.$editor[0]);
 
                     var caption = $('#redactor-image-title').val().replace(/(<([^>]+)>)/ig,"");
-                    var parentP = $image.parents('p');
-                    var captionContainer = parentP.find('.redactor-image-caption');
-                    if (captionContainer.length) {
-                        captionContainer.remove();
-                    }
+                    var parent = $image.parent();
+                    parent.contents().filter(function(){return this.nodeType === 3}).remove()
                     if (caption) {
-                        $image.after('<span class="redactor-image-caption">' + caption + '</span>');
-                        parentP.addClass('article-detail__image style_gray');
+                        $image.after(caption);
+                        parent.addClass('article-detail__image style_gray');
                     } else {
-                        parentP.removeClass('article-detail__image style_gray');
+                        parent.removeClass('article-detail__image style_gray');
                     }
 
                     var alt = $('#redactor-image-alt').val().replace(/(<([^>]+)>)/ig,"");
