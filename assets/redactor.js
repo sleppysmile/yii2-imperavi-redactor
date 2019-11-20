@@ -7750,7 +7750,7 @@
                         var node2 = this.selection.getMarker(2);
                         this.selection.setMarker(this.range, node2, false);
 
-                        if (this.utils.browser('chrome'))
+                        if (this.utils.browser('webkit'))
                         {
                             this.caret.set(node1, 0, node2, 0);
                         }
