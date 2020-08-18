@@ -3744,6 +3744,7 @@
                 {
                     this.image.hideResize();
                     this.buffer.set();
+                    var pTagName = 'P';
 
                     var $link = $image.closest('a', this.$editor[0]);
 
@@ -3756,7 +3757,12 @@
                     }
                     if (caption) {
                         $image.after(caption);
-                        parent.addClass('article-detail__image style_gray');
+
+                        if (parent.prop("tagName") !== pTagName) {
+                            parent.wrapInner("<p class=\"article-detail__image style_gray\"></p>");
+                        } else {
+                            parent.addClass('article-detail__image style_gray');
+                        }
                     } else {
                         parent.removeClass('article-detail__image style_gray');
                     }
