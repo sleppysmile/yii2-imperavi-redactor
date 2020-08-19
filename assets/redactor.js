@@ -3756,13 +3756,8 @@
                         }).remove();
                     }
                     if (caption) {
+                        $image.wrap('<p class=\'article-detail__image style_gray\'></p>');
                         $image.after(caption);
-
-                        if (parent.prop("tagName") !== pTagName) {
-                            parent.wrapInner("<p class=\"article-detail__image style_gray\"></p>");
-                        } else {
-                            parent.addClass('article-detail__image style_gray');
-                        }
                     } else {
                         parent.removeClass('article-detail__image style_gray');
                     }
