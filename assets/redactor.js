@@ -3744,7 +3744,6 @@
                 {
                     this.image.hideResize();
                     this.buffer.set();
-                    var pTagName = 'P';
 
                     var $link = $image.closest('a', this.$editor[0]);
 
