@@ -3755,8 +3755,10 @@
                         }).remove();
                     }
                     if (caption) {
-                        $image.wrap('<p class=\'article-detail__image style_gray\'></p>');
-                        $image.after(caption);
+                        if (!parent.hasClass('article-detail__image style_gray')) {
+                            $image.wrap('<p class=\'article-detail__image style_gray\'></p>');
+                            $image.after(caption);
+                        }
                     } else {
                         parent.removeClass('article-detail__image style_gray');
                     }
